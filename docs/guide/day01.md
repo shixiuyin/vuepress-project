@@ -183,9 +183,7 @@ https://hellogithub.com/report/tiobe/?url=/
 
 ### 2.3.Java语言特点
 
-​	Sun公司在1995年推出java时，发布了一个java白皮书，并这样定义java语言：java是一种简单的（Simple）、面向对象（Object-Oriented）、分布式的（Distributed）、解释的（Interpreted）、健壮的（Robust）、安全的（Secure）、结构中立的（Architecture-neutral）、可移植的（Portable）、高性能的（High-Performance）、多线程的（Multi-Threaded）、动态的（Dynamic）的语言。
-
-通过这11个词语来概括java语言的特性，下面来看下每个词语所代表的含义。
+Sun公司在1995年推出java时，发布了一个java白皮书，并这样定义java语言：
 
 **1.简单的（Simple）**
 风格和C++很像，基本语法和C很像，但是摒弃了C++容易引发错误的地方，如指针、内存管理、头文件等。
@@ -571,6 +569,7 @@ Java虚拟机机制屏蔽了底层运行平台的差别，实现了“一次编�
 选中项目，然后先建class。然后设置class名称
 
 <link rel="stylesheet" href="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.css">
+
 <script src="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.js"></script>
 <div id="gitalk-container"></div>
 <script>
