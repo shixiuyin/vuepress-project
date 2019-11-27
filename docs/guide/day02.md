@@ -1,68 +1,60 @@
-# 第二章:数据类型|运算符|变量
-
-``` xml
-1.java的概述
-2.java的发展历史
-	1995：诞生
-	2004:发布1.5 改名为5.0 
-	2009:Sun被Oracle收购
-	2018:java11
-3.环境变量的搭建
-	JAVA_HOME=JDK的安装路径(本地的路径:C:\Program Files\Java\jdk.version)
-	Path(不需要重新创建):%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;
-	CLASSPATH:.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar
-4.编写源代码
-	public class 类名{
-		//main方法 程序的入口
-		public static void main(String [] args)
-		{
-			//具体的业务....
-		}
-	}
-5.使用javac命令进行编译。xxx.java---->xxx.class  例如:javac Hello.java  ------>Hello.class
-6.使用java命令执行class文件 java Hello
-7.JVM (java虚拟机) 提供了不同平台的虚拟机。完成跨平台;
-8.使用eclipse
-```
-
-今天主要内容:
-
-``` xml
-2.1 关键字
-2.2 标识符
-2.3 变  量
-2.4 运算符
-```
+# 第二章:变量|数据类型|运算符
 
 
 
-## 二、关键字
+## 一、关键字
 
-### 1.含义
+### 1.1 含义
 
 被java赋予了特殊含义，用作专门用途的字符串。例如:public:表示公共的    class:定义类  
 
-特点:所有的单词都是小写  goto:表示java的预留关键字
+**特点**:所有的单词都是小写 `goto`和`const`:表示`java`的预留关键字
 
-### 2.具体的关键字
+### 1.2 Java关键字列表
 
-![mark](http://image.shibapi.com/blog/20191119/HwVNVfoxlIOc.png)
+| 用于定义数据类型的关键字   |           |        |        |          |
+| -------------------------- | --------- | ------ | ------ | -------- |
+| class                      | interface | enum   | byte   | short    |
+| int                        | long      | float  | double | char     |
+| boolean                    | void      |        |        |          |
+| 用于定义数据类型值的关键字 |           |        |        |          |
+| true                       | false     | null   |        |          |
+| 用于定义流程控制的关键字   |           |        |        |          |
+| if                         | else      | switch | case   | default  |
+| while                      | do        | for    | break  | continue |
+| return                     |           |        |        |          |
 
-![mark](http://image.shibapi.com/blog/20191119/u1PkE2mYoBqM.png)
+| 用于定义访问权限修饰符的关键字               |            |           |              |        |
+| -------------------------------------------- | ---------- | --------- | ------------ | ------ |
+| private                                      | protected  | public    |              |        |
+| 用于定义类，函数，变量修饰符的关键字         |            |           |              |        |
+| abstract                                     | final      | static    | synchronized |        |
+| 用于定义类与类之间关系的关键字               |            |           |              |        |
+| extends                                      | implements |           |              |        |
+| 用于定义建立实例及引用实例，判断实例的关键字 |            |           |              |        |
+| new                                          | this       | super     | instanceof   |        |
+| 用于异常处理的关键字                         |            |           |              |        |
+| try                                          | catch      | finally   | throw        | throws |
+| 用于包的关键字                               |            |           |              |        |
+| package                                      | import     |           |              |        |
+| 其他修饰符关键字                             |            |           |              |        |
+| native                                       | strictfp   | transient | volatile     | assert |
 
 
 
-## 三、标识符
+## 二、标识符
 
-### 1.含义
+### 2.1 含义
 
-Java 对各种变量、方法和类等要素命名时使用的字符序列称为标识符
+Java 对各种<mark>变量</mark>、<mark>方法</mark>和<mark>类</mark>等要素命名时使用的字符序列称为标识符
 
 凡是自己可以起名字的地方都叫标识符。
 
 
 
-### 2.命名的规则
+### 2.2 标识符命名规则
+
+自定义标识符，必须符合标识符的**命名规则**。否则出现语法错误。主要规则如下:
 
 ``` xml
 1.由26个英文字母大小写，数字：0-9 ，_或 $ 组成  
@@ -74,27 +66,34 @@ Java 对各种变量、方法和类等要素命名时使用的字符序列称为
 注意：取名满足见名知意，长度不宜过长。小于30个字符;
 ```
 
+**案例:**
+
+| 标识符                            | 含义                               |
+| --------------------------------- | ---------------------------------- |
+| <mark><del>&abc</del></mark>      | 错误：标识符不能包含&符号          |
+| <mark><del>2abc</del></mark>      | 错误：标识符不能是数字开头         |
+| <mark><del>class</del></mark>     | 错误：标识符不能使用关键字和保留字 |
+| `class1`                          | 正确                               |
+| `Animal`                          | 正确                               |
+| `animal`                          | 正确                               |
+| <mark><del>last name</del></mark> | 错误：标识符中间不能使用空格       |
+| `a`                               | 正确                               |
+| `age`                             | 正确                               |
 
 
-### 3.java标识符的命格规则
 
-``` xml
-很多公司里面，对命名有严格的要求
 
-1.包名： xxxyyyzzz
-	所有的名称都是小写;
-	多个单词都是小写；
-	可以使用.创建多层包名
-2.类名和接口名 XxxYyyZzz
-	首字母大写；
-	多个单词组成，首字母都是大写;
-3.变量和方法名 xxxYyyZzz
-	首个单词首字母小写；
-	多个单词组成，除了第一个单词首字母小写，其余单词首字母大写;
-4.常量的名称 XXX_YYY_ZZZ
-	常量的名称都是大写；
-	多个单词组成使用下划线链接;
-```
+
+### 2.3 标符命名规范
+
+Java标识符的命名规范和命名规则不同；命名规则是必须遵守，否则出现异常信息。而命名规范不是语法强制的，但是很多公司都会对命名有严格的要求，比较通用规范有一下几种规范：
+
+| 含义           | 规则                                              | 案例        |
+| -------------- | ------------------------------------------------- | ----------- |
+| 1.包名         | a.所有单词都是小写；b.多个层级使用(.)点隔开       | xxx.yyy.zzz |
+| 2.类\|接口名   | a.首字母大写；b.多个单词组成，首字母都是大写      | XxxYyyZzz   |
+| 3.方法\|变量名 | a.首个单词首字母小写,其余单词首字母大写(驼峰)     | xxxYyyZzz   |
+| 4.常量         | a.常量的名称都是大写;b.多个单词组成使用下划线链接 | XXX_YYY_ZZZ |
 
 
 
